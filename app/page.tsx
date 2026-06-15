@@ -12,60 +12,50 @@ import { Button } from "@/components/ui/button"
 const heroImage =
   "https://images.unsplash.com/photo-1738162837451-2041c1418f54?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1800"
 
-const productImageA =
-  "https://images.unsplash.com/photo-1738162837438-92ff852619a1?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1600"
-
-const productImageB =
-  "https://images.unsplash.com/photo-1564936160333-8b7a7ba8722c?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1600"
-
-const productImageC =
-  "https://images.unsplash.com/photo-1720036236694-d0a231c52563?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1600"
-
 const factoryImage =
   "https://images.unsplash.com/photo-1720036236694-d0a231c52563?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1600"
 
 const products = [
   {
-    label: "Flagship Series",
+    slug: "lx-prime",
     title: "LX Prime",
-    description:
-      "High-end fiber laser cutting system for premium sheet metal production.",
-    image: heroImage,
+    image: "https://www.fortunelaser.com/uploads/3015-metal-laser-cutter.jpg",
   },
   {
-    label: "Production Line",
+    slug: "lx-dynamic",
     title: "LX Dynamic",
-    description:
-      "Balanced cutting performance for continuous manufacturing workflows.",
-    image: productImageA,
+    image:
+      "https://www.fortunelaser.com/uploads/Laser-Cutting-Machine-with-Exchange-Table-1.jpg",
   },
   {
-    label: "Large Format",
+    slug: "lx-format",
     title: "LX Format",
-    description:
-      "Built for larger sheets, stronger presence, and industrial stability.",
-    image: productImageB,
+    image:
+      "https://www.fortunelaser.com/uploads/Large-Format-Industrial-Laser-Cutting-Machine-1.jpg",
   },
   {
-    label: "Automation Cell",
-    title: "LX Flow",
-    description:
-      "Integrated loading and unloading concept for scalable factory layouts.",
-    image: productImageC,
+    slug: "lx-powercut",
+    title: "LX PowerCut",
+    image:
+      "https://www.fortunelaser.com/uploads/High-Power-Fiber-Laser-Cutter-6KW-8KW-10KW-12KW-20KW-1.jpg",
   },
   {
-    label: "Precision Studio",
+    slug: "lx-cover",
+    title: "LX Cover",
+    image:
+      "https://www.fortunelaser.com/uploads/A-2-Full-Cover-Fiber-Laser-Cutting-Machine-4.jpg",
+  },
+  {
+    slug: "lx-tube",
+    title: "LX Tube",
+    image:
+      "https://www.fortunelaser.com/uploads/Professional-Fiber-Laser-Metal-Tube-Cutter-1.jpg",
+  },
+  {
+    slug: "lx-finecut",
     title: "LX FineCut",
-    description:
-      "Cleaner detailing for refined cutting applications and thinner materials.",
-    image: productImageA,
-  },
-  {
-    label: "Compact Footprint",
-    title: "LX Compact",
-    description:
-      "A smaller system concept for tighter production spaces and agile operations.",
-    image: productImageB,
+    image:
+      "https://www.fortunelaser.com/uploads/Precision-Fiber-Laser-Cutting-Machine-2.jpg",
   },
 ]
 
@@ -79,6 +69,8 @@ const companyDetails = [
   { label: "Email", value: "sales@laserworks.example" },
   { label: "Hours", value: "Mon - Fri, 08:30 - 18:00" },
 ]
+
+const marqueeProducts = [...products, ...products]
 
 export default function Page() {
   return (
@@ -162,46 +154,48 @@ export default function Page() {
       </Section>
 
       <Section id="products" className="pt-8 md:pt-14">
-        <div className="space-y-10">
+        <div className="space-y-8">
           <div className="max-w-3xl space-y-4">
             <p className="eyebrow">Product Introduction</p>
             <h2 className="headline-balance font-heading text-4xl font-semibold tracking-tight md:text-5xl">
-              Present the product range like a clean industrial catalog.
+              Present the product range as a moving product banner.
             </h2>
             <p className="text-base leading-7 text-muted-foreground">
-              Since you have many products, this section now works more like a
-              storefront grid: repeated blocks, quick scanning, and room to
-              grow.
+              Since you have many machines, this section now becomes a smaller,
+              auto-scrolling product strip. Each item only shows the product
+              image and product name, then clicks through to a placeholder
+              details page.
             </p>
           </div>
 
-          <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
-            {products.map((product) => (
-              <article
-                key={product.title}
-                className="group overflow-hidden rounded-[1.8rem] border border-border/80 bg-card/92 transition-transform duration-300 hover:-translate-y-1"
-              >
-                <figure className="relative aspect-[4/3] overflow-hidden">
-                  <Image
-                    src={product.image}
-                    alt={product.title}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/62 via-primary/8 to-transparent" />
-                </figure>
-                <div className="space-y-3 p-5">
-                  <p className="eyebrow">{product.label}</p>
-                  <h3 className="font-heading text-2xl font-semibold">
-                    {product.title}
-                  </h3>
-                  <p className="text-sm leading-6 text-muted-foreground">
-                    {product.description}
-                  </p>
-                </div>
-              </article>
-            ))}
+          <div className="product-marquee overflow-hidden py-2">
+            <div className="product-marquee-track flex gap-5 pr-5">
+              {marqueeProducts.map((product, index) => (
+                <Link
+                  key={`${product.slug}-${index}`}
+                  href={`/products/${product.slug}`}
+                  aria-label={`View details for ${product.title}`}
+                  className="group block w-[220px] shrink-0"
+                >
+                  <article className="overflow-hidden rounded-[1.5rem] border border-border/80 bg-card/92 transition-transform duration-300 hover:-translate-y-1">
+                    <figure className="relative aspect-[4/3] overflow-hidden bg-white">
+                      <Image
+                        src={product.image}
+                        alt={product.title}
+                        fill
+                        className="object-contain p-3 transition-transform duration-500 group-hover:scale-[1.03]"
+                        sizes="220px"
+                      />
+                    </figure>
+                    <div className="border-t border-border/70 px-4 py-3">
+                      <h3 className="font-heading text-lg font-semibold">
+                        {product.title}
+                      </h3>
+                    </div>
+                  </article>
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </Section>
