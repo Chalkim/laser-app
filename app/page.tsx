@@ -3,13 +3,18 @@ import Image from "next/image"
 import { ArrowRight, MapPin } from "lucide-react"
 
 import { ContactBlock } from "@/components/home/contact-block"
-import { ProductCard } from "@/components/home/product-card"
 import { Section } from "@/components/home/section"
 import { SiteFooter } from "@/components/home/site-footer"
 import { SiteHeader } from "@/components/home/site-header"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 const heroImage =
   "https://images.unsplash.com/photo-1738162837451-2041c1418f54?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1800"
@@ -25,36 +30,38 @@ const factoryImage =
 
 const products = [
   {
-    category: "Hero Product",
-    title: "Flagship Machine Presentation",
+    value: "flagship",
+    label: "Flagship Machine",
+    title: "A hero product should feel like a centerpiece, not a card.",
     description:
-      "Let one strong image and a measured headline introduce your core laser cutting offer before buyers dive into technical detail.",
+      "Use a single large image and a concise narrative to introduce the leading machine platform. This feels more premium than breaking the first product story into multiple little boxes.",
     image: heroImage,
   },
   {
-    category: "Supporting Section",
-    title: "Product Family Overview",
+    value: "family",
+    label: "Product Family",
+    title: "Tabs let the homepage show range without stacking card after card.",
     description:
-      "Use a second image-led card to introduce additional machine lines or applications without overloading the homepage with specifications.",
+      "A tabbed product area gives you room to present multiple machine directions while keeping the section disciplined and visually calm.",
     image: productImage,
   },
 ]
 
 const companySignals = [
   {
-    title: "Stronger visual confidence",
+    title: "Visual trust before technical depth",
     description:
-      "The homepage now leans on photography, spacing, and typography to build trust before the visitor reads details.",
+      "The homepage should first make visitors feel the brand is precise, composed, and premium. Detailed specifications can move deeper into the site.",
   },
   {
-    title: "Lighter information density",
+    title: "Less framing, more breathing room",
     description:
-      "Key sections are still present, but the page feels more curated and premium with less dashboard-like noise.",
+      "Reducing card count lets typography, spacing, and image composition shape the experience instead of repetitive containers.",
   },
   {
-    title: "Ready for real assets later",
+    title: "Placeholder media with real atmosphere",
     description:
-      "The current image placeholders can be replaced with your own machine, factory, and showroom photography later without redesign.",
+      "Internet-sourced imagery is enough to establish scale and tone now, while leaving clean slots for future original photography.",
   },
 ]
 
@@ -64,7 +71,7 @@ export default function Page() {
       <SiteHeader />
 
       <Section className="pt-6 pb-8 md:pt-10 md:pb-12">
-        <div className="grid gap-6 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:items-stretch">
+        <div className="grid gap-6 lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)] lg:items-stretch">
           <div className="flex flex-col justify-between gap-8 py-2">
             <div className="space-y-6">
               <Badge
@@ -80,9 +87,10 @@ export default function Page() {
                   Make the banner feel high-end before it feels technical.
                 </h1>
                 <p className="max-w-xl text-base leading-7 text-muted-foreground md:text-lg">
-                  This version shifts the homepage toward atmosphere,
-                  proportion, and trust. It keeps the industrial identity, but
-                  lets image quality and layout discipline do most of the work.
+                  This version pulls the page away from stacked cards and toward
+                  a more editorial industrial style. The first impression comes
+                  from image scale, controlled typography, and quiet
+                  composition.
                 </p>
               </div>
             </div>
@@ -104,43 +112,39 @@ export default function Page() {
               </Button>
             </div>
 
-            <Card className="panel-surface max-w-xl rounded-[1.75rem] py-0">
-              <CardContent className="space-y-3 px-6 py-6">
-                <p className="eyebrow">Direction</p>
-                <p className="text-sm leading-7 text-foreground/82">
-                  Fewer numeric panels, fewer system-like overlays, and more
-                  visual calm. The page should feel like a premium machinery
-                  brand, not a control interface.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-
-          <div className="panel-surface overflow-hidden rounded-[2rem]">
-            <div className="relative aspect-[4/5] min-h-[480px] md:min-h-[680px]">
-              <Image
-                src={heroImage}
-                alt="Laser cutting machine placeholder"
-                fill
-                className="object-cover"
-                priority
-                sizes="(max-width: 1024px) 100vw, 60vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/78 via-primary/12 to-transparent" />
-
-              <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
-                <div className="max-w-md rounded-[1.5rem] border border-white/15 bg-black/28 p-5 text-white backdrop-blur-sm">
-                  <div className="font-mono text-[0.68rem] tracking-[0.22em] text-white/62 uppercase">
-                    Internet placeholder image
-                  </div>
-                  <p className="mt-3 text-sm leading-6 text-white/84">
-                    This image is here to establish mood and scale now, and can
-                    be replaced later with your own machine photography.
-                  </p>
-                </div>
-              </div>
+            <div className="max-w-xl border-t border-border/80 pt-5">
+              <p className="eyebrow">Direction</p>
+              <p className="mt-3 text-sm leading-7 text-foreground/82">
+                The image is no longer treated like a card. It behaves like a
+                real visual centerpiece, while the surrounding content is kept
+                open and breathable.
+              </p>
             </div>
           </div>
+
+          <figure className="relative aspect-[4/5] min-h-[500px] overflow-hidden rounded-[2.4rem] md:min-h-[700px]">
+            <Image
+              src={heroImage}
+              alt="Laser cutting machine placeholder"
+              fill
+              className="object-cover"
+              priority
+              sizes="(max-width: 1024px) 100vw, 60vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-primary/78 via-primary/12 to-transparent" />
+
+            <figcaption className="absolute inset-x-0 bottom-0 p-6 md:p-8">
+              <div className="max-w-md text-white">
+                <div className="font-mono text-[0.68rem] tracking-[0.22em] text-white/62 uppercase">
+                  Internet placeholder image
+                </div>
+                <p className="mt-3 text-sm leading-6 text-white/84">
+                  This image is here to set mood and scale now, and can be
+                  replaced later with your own machine photography.
+                </p>
+              </div>
+            </figcaption>
+          </figure>
         </div>
       </Section>
 
@@ -149,52 +153,92 @@ export default function Page() {
           <div className="max-w-3xl space-y-4">
             <p className="eyebrow">Product Introduction</p>
             <h2 className="headline-balance font-heading text-4xl font-semibold tracking-tight md:text-5xl">
-              Product sections can stay elegant before they become technical.
+              Use tabs to show product range without boxing everything in.
             </h2>
             <p className="text-base leading-7 text-muted-foreground">
-              The homepage can introduce product families through large cards
-              and industrial imagery, then hand off detailed performance data to
-              future product pages.
+              `Tabs` are a better fit here than multiple cards. They keep the
+              layout structured, but let one large visual stay in focus at a
+              time.
             </p>
           </div>
 
-          <div className="grid gap-6 lg:grid-cols-2">
+          <Tabs defaultValue="flagship" className="gap-6">
+            <TabsList
+              variant="line"
+              className="w-full justify-start gap-6 overflow-x-auto p-0 text-base"
+            >
+              {products.map((product) => (
+                <TabsTrigger
+                  key={product.value}
+                  value={product.value}
+                  className="rounded-none px-0 py-2 text-sm"
+                >
+                  {product.label}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+
             {products.map((product) => (
-              <ProductCard key={product.title} {...product} />
+              <TabsContent key={product.value} value={product.value}>
+                <div className="grid gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
+                  <figure className="relative aspect-[16/10] overflow-hidden rounded-[2rem]">
+                    <Image
+                      src={product.image}
+                      alt={product.title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 100vw, 56vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary/45 to-transparent" />
+                  </figure>
+
+                  <div className="space-y-5">
+                    <p className="eyebrow">{product.label}</p>
+                    <h3 className="headline-balance font-heading text-3xl font-semibold md:text-4xl">
+                      {product.title}
+                    </h3>
+                    <p className="max-w-xl text-base leading-7 text-muted-foreground">
+                      {product.description}
+                    </p>
+                    <div className="border-t border-border/80 pt-5 text-sm leading-7 text-foreground/82">
+                      This approach feels more like a premium brand presentation
+                      and less like a grid of repeating marketing boxes.
+                    </div>
+                  </div>
+                </div>
+              </TabsContent>
             ))}
-          </div>
+          </Tabs>
         </div>
       </Section>
 
       <Section id="company">
-        <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-          <div className="panel-surface overflow-hidden rounded-[2rem]">
-            <div className="relative aspect-[5/4] min-h-[420px]">
-              <Image
-                src={companyImage}
-                alt="Industrial interior placeholder"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 54vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/58 via-primary/8 to-transparent" />
-            </div>
-          </div>
+        <div className="grid gap-6 lg:grid-cols-[1.08fr_0.92fr]">
+          <figure className="relative aspect-[5/4] min-h-[420px] overflow-hidden rounded-[2.2rem]">
+            <Image
+              src={companyImage}
+              alt="Industrial interior placeholder"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 54vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-primary/58 via-primary/8 to-transparent" />
+          </figure>
 
           <div className="flex flex-col gap-6">
-            <div className="panel-surface rounded-[2rem] p-6 md:p-8">
+            <div className="space-y-4">
               <p className="eyebrow">Company Information</p>
-              <h2 className="headline-balance mt-4 font-heading text-4xl font-semibold tracking-tight md:text-5xl">
-                Keep the company section composed and architectural.
+              <h2 className="headline-balance font-heading text-4xl font-semibold tracking-tight md:text-5xl">
+                Company context should feel composed, not boxed in.
               </h2>
-              <p className="mt-4 text-base leading-7 text-muted-foreground">
-                One strong supporting image, a concise brand statement, and a
-                clean location card are enough to make this part of the page
-                feel mature.
+              <p className="text-base leading-7 text-muted-foreground">
+                One supporting image, one clean location block, and an
+                `Accordion` for additional brand context keep this section
+                lighter and more architectural.
               </p>
             </div>
 
-            <div className="panel-surface rounded-[2rem] p-6 md:p-8">
+            <div className="border-y border-border/80 py-6">
               <div className="flex items-start gap-4">
                 <div className="rounded-full border border-border/70 bg-secondary/80 p-3">
                   <MapPin className="size-5 text-accent" />
@@ -215,52 +259,52 @@ export default function Page() {
               </div>
             </div>
 
-            <div className="grid gap-4">
+            <Accordion
+              type="single"
+              collapsible
+              className="border-t border-border/80"
+            >
               {companySignals.map((item) => (
-                <Card
-                  key={item.title}
-                  className="panel-surface rounded-[1.5rem] py-0"
-                >
-                  <CardContent className="space-y-2 px-5 py-5">
-                    <h3 className="font-heading text-lg font-medium">
-                      {item.title}
-                    </h3>
-                    <p className="text-sm leading-6 text-muted-foreground">
-                      {item.description}
-                    </p>
-                  </CardContent>
-                </Card>
+                <AccordionItem key={item.title} value={item.title}>
+                  <AccordionTrigger className="py-4 text-base font-medium no-underline hover:no-underline">
+                    <span className="font-heading text-xl">{item.title}</span>
+                  </AccordionTrigger>
+                  <AccordionContent className="pr-6 text-sm leading-7 text-muted-foreground">
+                    <p>{item.description}</p>
+                  </AccordionContent>
+                </AccordionItem>
               ))}
-            </div>
+            </Accordion>
           </div>
         </div>
       </Section>
 
       <Section className="pt-0">
-        <div className="panel-surface overflow-hidden rounded-[2rem]">
-          <div className="grid lg:grid-cols-[1.05fr_0.95fr]">
-            <div className="relative min-h-[320px]">
-              <Image
-                src={factoryImage}
-                alt="Factory placeholder"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/55 to-transparent" />
-            </div>
-            <div className="flex items-center p-6 md:p-10">
-              <div className="max-w-xl space-y-4">
-                <p className="eyebrow">Brand Presence</p>
-                <h2 className="headline-balance font-heading text-4xl font-semibold tracking-tight md:text-5xl">
-                  Let the supporting sections feel quiet and expensive.
-                </h2>
-                <p className="text-base leading-7 text-muted-foreground">
-                  This wide image break gives the homepage breathing room and
-                  keeps the industrial tone without falling back into
-                  specification-heavy presentation.
-                </p>
-              </div>
+        <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+          <figure className="relative min-h-[320px] overflow-hidden rounded-[2.2rem]">
+            <Image
+              src={factoryImage}
+              alt="Factory placeholder"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/55 to-transparent" />
+          </figure>
+
+          <div className="max-w-xl space-y-4 px-2">
+            <p className="eyebrow">Brand Presence</p>
+            <h2 className="headline-balance font-heading text-4xl font-semibold tracking-tight md:text-5xl">
+              Let the supporting sections feel quiet and expensive.
+            </h2>
+            <p className="text-base leading-7 text-muted-foreground">
+              This wide image break gives the homepage breathing room and keeps
+              the industrial tone without falling back into specification-heavy
+              presentation.
+            </p>
+            <div className="border-t border-border/80 pt-5 text-sm leading-7 text-foreground/82">
+              Full-width imagery and open text blocks usually feel more like a
+              brand site than another boxed content stack.
             </div>
           </div>
         </div>
