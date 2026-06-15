@@ -27,15 +27,15 @@ const contacts = [
 export function ContactBlock() {
   return (
     <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
-      <Card className="panel-surface rounded-[2rem] border-border/70 bg-card/88 py-0">
-        <CardHeader className="gap-3 border-b border-border/70 px-6 py-6 md:px-8">
+      <Card className="panel-surface rounded-[2rem] py-0">
+        <CardHeader className="gap-3 px-6 py-6 md:px-8">
           <p className="eyebrow">Request Consultation</p>
           <CardTitle className="headline-balance font-heading text-3xl">
-            Tell us your material, thickness, and output goals.
+            Keep the conversation entry point refined and simple.
           </CardTitle>
           <p className="max-w-2xl text-sm leading-6 text-muted-foreground">
-            This first version is a structured UI block for future integration.
-            A sales engineer can later connect it to CRM, email, or form APIs.
+            This contact block is intentionally lighter now, with fewer fields
+            and a calmer visual rhythm.
           </p>
         </CardHeader>
         <CardContent className="px-6 py-6 md:px-8 md:py-8">
@@ -57,10 +57,10 @@ export function ContactBlock() {
               <Input placeholder="+00 0000 000000" />
             </label>
             <label className="space-y-2 md:col-span-2">
-              <span className="text-sm font-medium">Project Details</span>
+              <span className="text-sm font-medium">Project Note</span>
               <Textarea
-                className="min-h-36"
-                placeholder="Material type, thickness range, sheet size, production volume, automation needs..."
+                className="min-h-32"
+                placeholder="Briefly describe the machine direction, application, or showroom request..."
               />
             </label>
             <div className="flex flex-col gap-3 pt-2 md:col-span-2 md:flex-row md:items-center md:justify-between">
@@ -76,19 +76,19 @@ export function ContactBlock() {
         </CardContent>
       </Card>
 
-      <Card className="panel-surface rounded-[2rem] border-border/70 bg-primary py-0 text-primary-foreground">
+      <Card className="rounded-[2rem] border border-border/70 bg-primary py-0 text-primary-foreground shadow-[0_30px_90px_-50px_rgba(15,23,42,0.85)]">
         <CardHeader className="gap-3 px-6 py-6 md:px-8">
           <p className="font-mono text-[0.7rem] tracking-[0.24em] text-primary-foreground/70 uppercase">
             Direct Contact
           </p>
           <CardTitle className="headline-balance font-heading text-3xl">
-            Built for long-cycle industrial buying decisions.
+            A quiet, premium ending to the page.
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-6 px-6 pb-8 md:px-8">
           <p className="text-sm leading-6 text-primary-foreground/76">
-            Use these placeholders as the final content slots for your sales
-            line, technical support email, and company address.
+            Use these placeholders for real sales, service, and location details
+            once your final company information is ready.
           </p>
 
           <div className="space-y-4">
@@ -114,14 +114,14 @@ export function ContactBlock() {
             ))}
           </div>
 
-          <div className="rounded-[1.5rem] border border-white/12 bg-white/6 p-5">
+          <div className="rounded-[1.5rem] border border-white/12 bg-white/8 p-5">
             <div className="font-mono text-[0.68rem] tracking-[0.22em] text-primary-foreground/60 uppercase">
-              Support Window
+              Showroom Note
             </div>
             <div className="mt-3 text-sm leading-6 text-primary-foreground/86">
-              Monday - Friday, 08:30 - 18:00
+              By appointment, Monday - Friday
               <br />
-              Application advice, machine selection, and automation planning
+              Address and map coordinates can be swapped in later
             </div>
           </div>
         </CardContent>

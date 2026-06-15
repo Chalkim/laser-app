@@ -1,14 +1,8 @@
 import Link from "next/link"
-import {
-  ArrowRight,
-  ChevronRight,
-  MapPin,
-  ShieldCheck,
-  Sparkles,
-} from "lucide-react"
+import Image from "next/image"
+import { ArrowRight, MapPin } from "lucide-react"
 
 import { ContactBlock } from "@/components/home/contact-block"
-import { HeroMedia } from "@/components/home/hero-media"
 import { ProductCard } from "@/components/home/product-card"
 import { Section } from "@/components/home/section"
 import { SiteFooter } from "@/components/home/site-footer"
@@ -16,71 +10,51 @@ import { SiteHeader } from "@/components/home/site-header"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Separator } from "@/components/ui/separator"
 
-const proofPoints = [
-  "Stable cut quality across mixed-batch production",
-  "Engineered for uptime, training simplicity, and service access",
-  "Ready for future automation, MES, and factory integration",
-]
+const heroImage =
+  "https://images.unsplash.com/photo-1738162837451-2041c1418f54?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1800"
+
+const productImage =
+  "https://images.unsplash.com/photo-1738162837438-92ff852619a1?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1600"
+
+const companyImage =
+  "https://images.unsplash.com/photo-1564936160333-8b7a7ba8722c?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1600"
+
+const factoryImage =
+  "https://images.unsplash.com/photo-1720036236694-d0a231c52563?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1600"
 
 const products = [
   {
-    category: "2D Fiber Laser",
-    title: "LX Prime",
+    category: "Hero Product",
+    title: "Flagship Machine Presentation",
     description:
-      "A flexible production platform for sheet metal manufacturers balancing speed, footprint, and clean edge quality.",
-    specs: [
-      "High-speed shuttle table architecture",
-      "Operator-focused interface and fast setup",
-      "Prepared for smart nozzle and gas optimization",
-    ],
+      "Let one strong image and a measured headline introduce your core laser cutting offer before buyers dive into technical detail.",
+    image: heroImage,
   },
   {
-    category: "Heavy Duty Format",
-    title: "LX Format",
+    category: "Supporting Section",
+    title: "Product Family Overview",
     description:
-      "Designed for larger sheets and stable continuous output where rigidity, handling, and process consistency matter.",
-    specs: [
-      "Extended bed configuration for larger formats",
-      "Reinforced structure for long production cycles",
-      "Integrated diagnostics for predictable maintenance",
-    ],
+      "Use a second image-led card to introduce additional machine lines or applications without overloading the homepage with specifications.",
+    image: productImage,
   },
-  {
-    category: "Automation Ready",
-    title: "LX Flow Cell",
-    description:
-      "A modular cell concept for customers planning unmanned shifts, assisted loading, or connected factory workflows.",
-    specs: [
-      "Load and unload expansion path",
-      "Designed for upstream and downstream integration",
-      "Structured data outputs for production visibility",
-    ],
-  },
-]
-
-const stats = [
-  { label: "Machine Platform", value: "Fiber Laser" },
-  { label: "Use Case", value: "Sheet Metal Production" },
-  { label: "Priority", value: "Precision + Uptime" },
 ]
 
 const companySignals = [
   {
-    title: "Application-first engineering",
+    title: "Stronger visual confidence",
     description:
-      "Machine configuration, process advice, and automation planning are framed around the customer's production target.",
+      "The homepage now leans on photography, spacing, and typography to build trust before the visitor reads details.",
   },
   {
-    title: "Structured service model",
+    title: "Lighter information density",
     description:
-      "Clear training, maintenance intervals, and spare-parts logic are presented as part of the buying decision.",
+      "Key sections are still present, but the page feels more curated and premium with less dashboard-like noise.",
   },
   {
-    title: "Production credibility",
+    title: "Ready for real assets later",
     description:
-      "The visual language and information density are tuned to industrial buyers who need confidence, not hype.",
+      "The current image placeholders can be replaced with your own machine, factory, and showroom photography later without redesign.",
   },
 ]
 
@@ -89,25 +63,26 @@ export default function Page() {
     <main className="page-shell min-h-svh">
       <SiteHeader />
 
-      <Section className="pt-8 pb-10 md:pt-14 md:pb-16">
-        <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-12">
-          <div className="space-y-8">
-            <div className="space-y-5">
-              <Badge variant="outline" className="rounded-full px-3 py-1">
-                Precision laser cutting systems
+      <Section className="pt-6 pb-8 md:pt-10 md:pb-12">
+        <div className="grid gap-6 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:items-stretch">
+          <div className="flex flex-col justify-between gap-8 py-2">
+            <div className="space-y-6">
+              <Badge
+                variant="outline"
+                className="rounded-full border-border/80 bg-background/70 px-3 py-1"
+              >
+                Premium laser cutting homepage concept
               </Badge>
+
               <div className="space-y-4">
-                <p className="eyebrow">
-                  Industrial reliability, designed clearly
-                </p>
+                <p className="eyebrow">Visual-first industrial design</p>
                 <h1 className="headline-balance font-heading text-5xl leading-none font-semibold tracking-tight text-foreground md:text-6xl xl:text-7xl">
-                  Laser cutting machines that look as precise as they perform.
+                  Make the banner feel high-end before it feels technical.
                 </h1>
-                <p className="max-w-2xl text-base leading-7 text-muted-foreground md:text-lg">
-                  A homepage concept for a modern laser cutting brand:
-                  restrained, technical, and credible. Built to communicate
-                  machine capability, engineering confidence, and direct paths
-                  to consultation.
+                <p className="max-w-xl text-base leading-7 text-muted-foreground md:text-lg">
+                  This version shifts the homepage toward atmosphere,
+                  proportion, and trust. It keeps the industrial identity, but
+                  lets image quality and layout discipline do most of the work.
                 </p>
               </div>
             </div>
@@ -115,7 +90,7 @@ export default function Page() {
             <div className="flex flex-col gap-3 sm:flex-row">
               <Button asChild size="lg" className="rounded-full px-6">
                 <Link href="#contact">
-                  Request Consultation
+                  Contact Sales
                   <ArrowRight className="size-4" />
                 </Link>
               </Button>
@@ -123,70 +98,67 @@ export default function Page() {
                 asChild
                 variant="outline"
                 size="lg"
-                className="rounded-full px-6"
+                className="rounded-full border-border/80 bg-background/70 px-6"
               >
-                <Link href="#products">
-                  View Product Concepts
-                  <ChevronRight className="size-4" />
-                </Link>
+                <Link href="#products">View Sections</Link>
               </Button>
             </div>
 
-            <div className="grid gap-3 md:grid-cols-3">
-              {stats.map((stat) => (
-                <Card
-                  key={stat.label}
-                  className="panel-surface rounded-[1.5rem] border-border/70 bg-card/82 py-0"
-                >
-                  <CardContent className="space-y-2 px-5 py-5">
-                    <div className="font-mono text-[0.68rem] tracking-[0.2em] text-muted-foreground uppercase">
-                      {stat.label}
-                    </div>
-                    <div className="text-sm font-medium text-foreground">
-                      {stat.value}
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-
-            <div className="grid gap-3">
-              {proofPoints.map((point) => (
-                <div key={point} className="flex items-start gap-3">
-                  <ShieldCheck className="mt-0.5 size-4 text-accent" />
-                  <p className="text-sm leading-6 text-foreground/84">
-                    {point}
-                  </p>
-                </div>
-              ))}
-            </div>
+            <Card className="panel-surface max-w-xl rounded-[1.75rem] py-0">
+              <CardContent className="space-y-3 px-6 py-6">
+                <p className="eyebrow">Direction</p>
+                <p className="text-sm leading-7 text-foreground/82">
+                  Fewer numeric panels, fewer system-like overlays, and more
+                  visual calm. The page should feel like a premium machinery
+                  brand, not a control interface.
+                </p>
+              </CardContent>
+            </Card>
           </div>
 
-          <HeroMedia />
+          <div className="panel-surface overflow-hidden rounded-[2rem]">
+            <div className="relative aspect-[4/5] min-h-[480px] md:min-h-[680px]">
+              <Image
+                src={heroImage}
+                alt="Laser cutting machine placeholder"
+                fill
+                className="object-cover"
+                priority
+                sizes="(max-width: 1024px) 100vw, 60vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/78 via-primary/12 to-transparent" />
+
+              <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
+                <div className="max-w-md rounded-[1.5rem] border border-white/15 bg-black/28 p-5 text-white backdrop-blur-sm">
+                  <div className="font-mono text-[0.68rem] tracking-[0.22em] text-white/62 uppercase">
+                    Internet placeholder image
+                  </div>
+                  <p className="mt-3 text-sm leading-6 text-white/84">
+                    This image is here to establish mood and scale now, and can
+                    be replaced later with your own machine photography.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </Section>
 
-      <Section id="products" className="pt-10 md:pt-16">
+      <Section id="products" className="pt-8 md:pt-14">
         <div className="space-y-10">
-          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-            <div className="max-w-3xl space-y-4">
-              <p className="eyebrow">Product Introduction</p>
-              <h2 className="headline-balance font-heading text-4xl font-semibold tracking-tight md:text-5xl">
-                A homepage structure that can scale into a full machine catalog.
-              </h2>
-              <p className="text-base leading-7 text-muted-foreground">
-                The first screen introduces your core laser-cutting offers
-                through clean product cards and practical value statements,
-                leaving room for later detail pages and technical downloads.
-              </p>
-            </div>
-            <div className="flex items-center gap-2 rounded-full border border-border/70 bg-card/75 px-4 py-2 text-sm text-muted-foreground">
-              <Sparkles className="size-4 text-accent" />
-              Homepage-first structure, multi-page ready
-            </div>
+          <div className="max-w-3xl space-y-4">
+            <p className="eyebrow">Product Introduction</p>
+            <h2 className="headline-balance font-heading text-4xl font-semibold tracking-tight md:text-5xl">
+              Product sections can stay elegant before they become technical.
+            </h2>
+            <p className="text-base leading-7 text-muted-foreground">
+              The homepage can introduce product families through large cards
+              and industrial imagery, then hand off detailed performance data to
+              future product pages.
+            </p>
           </div>
 
-          <div className="grid gap-6 xl:grid-cols-3">
+          <div className="grid gap-6 lg:grid-cols-2">
             {products.map((product) => (
               <ProductCard key={product.title} {...product} />
             ))}
@@ -195,95 +167,100 @@ export default function Page() {
       </Section>
 
       <Section id="company">
-        <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
-          <div className="panel-surface machine-placeholder relative min-h-[420px] overflow-hidden rounded-[2rem] p-6 md:p-8">
-            <div className="flex items-center justify-between gap-4">
-              <div>
-                <p className="eyebrow">Company Location</p>
-                <h2 className="mt-3 font-heading text-3xl font-semibold">
-                  Map and information block
-                </h2>
-              </div>
-              <div className="rounded-full border border-border/70 bg-background/75 p-3">
-                <MapPin className="size-5 text-accent" />
-              </div>
+        <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="panel-surface overflow-hidden rounded-[2rem]">
+            <div className="relative aspect-[5/4] min-h-[420px]">
+              <Image
+                src={companyImage}
+                alt="Industrial interior placeholder"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 54vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/58 via-primary/8 to-transparent" />
             </div>
-
-            <div className="mt-8 rounded-[1.75rem] border border-border/70 bg-background/66 p-4 backdrop-blur-sm md:p-5">
-              <div className="relative aspect-[4/3] overflow-hidden rounded-[1.35rem] border border-border/70 bg-[linear-gradient(90deg,color-mix(in_oklch,var(--foreground)_7%,transparent)_1px,transparent_1px),linear-gradient(180deg,color-mix(in_oklch,var(--foreground)_7%,transparent)_1px,transparent_1px),linear-gradient(180deg,color-mix(in_oklch,var(--foreground)_3%,transparent),transparent_52%)] bg-[size:42px_42px,42px_42px,auto]">
-                <div className="absolute top-[22%] left-[16%] h-24 w-24 rounded-full border border-accent/40 bg-accent/18 blur-2xl" />
-                <div className="absolute right-[18%] bottom-[22%] h-20 w-20 rounded-full border border-foreground/10 bg-foreground/10 blur-xl" />
-                <div className="absolute top-[28%] right-[20%] left-[22%] h-px bg-border/80" />
-                <div className="absolute top-[26%] left-[26%] h-[36%] w-px bg-border/80" />
-                <div className="absolute bottom-[24%] left-[34%] flex items-center gap-2 rounded-full border border-border/80 bg-background/90 px-3 py-2 shadow-sm">
-                  <span className="size-2 rounded-full bg-accent" />
-                  <span className="text-sm font-medium">
-                    Headquarters Placeholder
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <p className="mt-5 max-w-2xl text-sm leading-6 text-muted-foreground">
-              This intentionally styled map area is ready to be replaced with a
-              real embedded map, factory photo, or regional office visualization
-              once the brand assets and location data are available.
-            </p>
           </div>
 
-          <div className="panel-surface rounded-[2rem] p-6 md:p-8">
-            <div className="space-y-4">
-              <p className="eyebrow">Why Buyers Trust the Brand</p>
-              <h2 className="headline-balance font-heading text-4xl font-semibold tracking-tight md:text-5xl">
-                Company context should support the machine story, not distract
-                from it.
+          <div className="flex flex-col gap-6">
+            <div className="panel-surface rounded-[2rem] p-6 md:p-8">
+              <p className="eyebrow">Company Information</p>
+              <h2 className="headline-balance mt-4 font-heading text-4xl font-semibold tracking-tight md:text-5xl">
+                Keep the company section composed and architectural.
               </h2>
-              <p className="text-base leading-7 text-muted-foreground">
-                The company section pairs location, service structure, and
-                business clarity so the homepage feels credible to plant
-                managers, technical teams, and procurement stakeholders.
+              <p className="mt-4 text-base leading-7 text-muted-foreground">
+                One strong supporting image, a concise brand statement, and a
+                clean location card are enough to make this part of the page
+                feel mature.
               </p>
             </div>
 
-            <Separator className="my-7" />
-
-            <div className="space-y-5">
-              {companySignals.map((item, index) => (
-                <div key={item.title} className="space-y-3">
-                  <div className="flex items-center gap-4">
-                    <span className="font-mono text-xs text-muted-foreground">
-                      0{index + 1}
-                    </span>
-                    <h3 className="font-heading text-xl font-medium">
-                      {item.title}
-                    </h3>
-                  </div>
-                  <p className="pl-8 text-sm leading-6 text-muted-foreground">
-                    {item.description}
+            <div className="panel-surface rounded-[2rem] p-6 md:p-8">
+              <div className="flex items-start gap-4">
+                <div className="rounded-full border border-border/70 bg-secondary/80 p-3">
+                  <MapPin className="size-5 text-accent" />
+                </div>
+                <div className="space-y-3">
+                  <p className="eyebrow">Map + Info</p>
+                  <h3 className="font-heading text-2xl font-semibold">
+                    Address-ready information block
+                  </h3>
+                  <p className="text-sm leading-6 text-muted-foreground">
+                    Future Industrial Park, Building A
+                    <br />
+                    Shanghai, China
+                    <br />
+                    Mon - Fri, 08:30 - 18:00
                   </p>
                 </div>
-              ))}
+              </div>
             </div>
 
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              <Card className="rounded-[1.5rem] border-border/70 bg-muted/55 py-0">
-                <CardContent className="space-y-2 px-5 py-5">
-                  <div className="eyebrow">Coverage</div>
-                  <div className="text-sm leading-6 text-foreground/84">
-                    Machine selection, process planning, installation, and
-                    operator onboarding
-                  </div>
-                </CardContent>
-              </Card>
-              <Card className="rounded-[1.5rem] border-border/70 bg-muted/55 py-0">
-                <CardContent className="space-y-2 px-5 py-5">
-                  <div className="eyebrow">Positioning</div>
-                  <div className="text-sm leading-6 text-foreground/84">
-                    Minimal industrial identity shaped for multi-page corporate
-                    growth
-                  </div>
-                </CardContent>
-              </Card>
+            <div className="grid gap-4">
+              {companySignals.map((item) => (
+                <Card
+                  key={item.title}
+                  className="panel-surface rounded-[1.5rem] py-0"
+                >
+                  <CardContent className="space-y-2 px-5 py-5">
+                    <h3 className="font-heading text-lg font-medium">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm leading-6 text-muted-foreground">
+                      {item.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      <Section className="pt-0">
+        <div className="panel-surface overflow-hidden rounded-[2rem]">
+          <div className="grid lg:grid-cols-[1.05fr_0.95fr]">
+            <div className="relative min-h-[320px]">
+              <Image
+                src={factoryImage}
+                alt="Factory placeholder"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/55 to-transparent" />
+            </div>
+            <div className="flex items-center p-6 md:p-10">
+              <div className="max-w-xl space-y-4">
+                <p className="eyebrow">Brand Presence</p>
+                <h2 className="headline-balance font-heading text-4xl font-semibold tracking-tight md:text-5xl">
+                  Let the supporting sections feel quiet and expensive.
+                </h2>
+                <p className="text-base leading-7 text-muted-foreground">
+                  This wide image break gives the homepage breathing room and
+                  keeps the industrial tone without falling back into
+                  specification-heavy presentation.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -294,13 +271,11 @@ export default function Page() {
           <div className="max-w-3xl space-y-4">
             <p className="eyebrow">Contact Inquiry</p>
             <h2 className="headline-balance font-heading text-4xl font-semibold tracking-tight md:text-5xl">
-              A clear consultation path closes the homepage with confidence.
+              Finish with one clear invitation to start the conversation.
             </h2>
             <p className="text-base leading-7 text-muted-foreground">
-              This section is designed as a UI-ready lead capture area with
-              direct sales contact information. It is intentionally
-              presentational for now, so you can connect the final workflow
-              later.
+              The last block stays easy to scan and premium in tone, with real
+              contact paths and a lightweight form structure.
             </p>
           </div>
 

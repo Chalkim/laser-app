@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { ArrowUpRight } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
@@ -13,20 +14,33 @@ type ProductCardProps = {
   category: string
   title: string
   description: string
-  specs: string[]
+  image: string
 }
 
 export function ProductCard({
   category,
   title,
   description,
-  specs,
+  image,
 }: ProductCardProps) {
   return (
-    <Card className="panel-surface h-full rounded-[1.75rem] border-border/70 bg-card/85 py-0">
-      <CardHeader className="gap-4 border-b border-border/70 px-6 py-6">
+    <Card className="panel-surface h-full overflow-hidden rounded-[2rem] py-0">
+      <div className="relative aspect-[4/3]">
+        <Image
+          src={image}
+          alt={title}
+          fill
+          className="object-cover"
+          sizes="(max-width: 768px) 100vw, 33vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-primary/55 via-primary/10 to-transparent" />
+      </div>
+      <CardHeader className="gap-4 px-6 py-6">
         <div className="flex items-center justify-between gap-3">
-          <Badge variant="outline" className="rounded-full px-3 py-1">
+          <Badge
+            variant="outline"
+            className="rounded-full border-border/70 px-3 py-1"
+          >
             {category}
           </Badge>
           <ArrowUpRight className="size-4 text-muted-foreground" />
@@ -38,16 +52,11 @@ export function ProductCard({
           </CardDescription>
         </div>
       </CardHeader>
-      <CardContent className="space-y-3 px-6 py-6">
-        {specs.map((spec) => (
-          <div
-            key={spec}
-            className="flex items-center gap-3 border-b border-border/60 pb-3 last:border-b-0 last:pb-0"
-          >
-            <span className="size-2 rounded-full bg-accent" />
-            <span className="text-sm text-foreground/88">{spec}</span>
-          </div>
-        ))}
+      <CardContent className="px-6 pt-0 pb-6">
+        <p className="text-sm leading-6 text-muted-foreground">
+          Presentation-led homepage card with image-first storytelling and
+          concise supporting copy.
+        </p>
       </CardContent>
     </Card>
   )
