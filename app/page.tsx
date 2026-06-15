@@ -6,12 +6,6 @@ import { ContactBlock } from "@/components/home/contact-block"
 import { Section } from "@/components/home/section"
 import { SiteFooter } from "@/components/home/site-footer"
 import { SiteHeader } from "@/components/home/site-header"
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -21,9 +15,6 @@ const heroImage =
 
 const productImage =
   "https://images.unsplash.com/photo-1738162837438-92ff852619a1?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1600"
-
-const companyImage =
-  "https://images.unsplash.com/photo-1564936160333-8b7a7ba8722c?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1600"
 
 const factoryImage =
   "https://images.unsplash.com/photo-1720036236694-d0a231c52563?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1600"
@@ -47,22 +38,15 @@ const products = [
   },
 ]
 
-const companySignals = [
+const companyDetails = [
+  { label: "Company", value: "LaserWorks Manufacturing Co., Ltd." },
   {
-    title: "Visual trust before technical depth",
-    description:
-      "The homepage should first make visitors feel the brand is precise, composed, and premium. Detailed specifications can move deeper into the site.",
+    label: "Address",
+    value: "Future Industrial Park, Building A, Shanghai, China",
   },
-  {
-    title: "Less framing, more breathing room",
-    description:
-      "Reducing card count lets typography, spacing, and image composition shape the experience instead of repetitive containers.",
-  },
-  {
-    title: "Placeholder media with real atmosphere",
-    description:
-      "Internet-sourced imagery is enough to establish scale and tone now, while leaving clean slots for future original photography.",
-  },
+  { label: "Phone", value: "+86 21 4000 1234" },
+  { label: "Email", value: "sales@laserworks.example" },
+  { label: "Hours", value: "Mon - Fri, 08:30 - 18:00" },
 ]
 
 export default function Page() {
@@ -214,67 +198,63 @@ export default function Page() {
 
       <Section id="company">
         <div className="grid gap-6 lg:grid-cols-[1.08fr_0.92fr]">
-          <figure className="relative aspect-[5/4] min-h-[420px] overflow-hidden rounded-[2.2rem]">
-            <Image
-              src={companyImage}
-              alt="Industrial interior placeholder"
-              fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 54vw"
+          <div className="overflow-hidden rounded-[2.2rem] border border-border/80 bg-secondary/30">
+            <iframe
+              title="LaserWorks location map"
+              src="https://www.google.com/maps?q=Shanghai%20China&z=12&output=embed"
+              className="h-[420px] w-full md:h-[560px]"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-primary/58 via-primary/8 to-transparent" />
-          </figure>
+          </div>
 
           <div className="flex flex-col gap-6">
             <div className="space-y-4">
               <p className="eyebrow">Company Information</p>
               <h2 className="headline-balance font-heading text-4xl font-semibold tracking-tight md:text-5xl">
-                Company context should feel composed, not boxed in.
+                Keep the company section direct and useful.
               </h2>
               <p className="text-base leading-7 text-muted-foreground">
-                One supporting image, one clean location block, and an
-                `Accordion` for additional brand context keep this section
-                lighter and more architectural.
+                Left side for the map, right side for the essential company
+                details. No extra folded content, just the key information
+                visitors are most likely to look for.
               </p>
             </div>
 
-            <div className="border-y border-border/80 py-6">
+            <div className="space-y-5 border-y border-border/80 py-6">
               <div className="flex items-start gap-4">
                 <div className="rounded-full border border-border/70 bg-secondary/80 p-3">
                   <MapPin className="size-5 text-accent" />
                 </div>
                 <div className="space-y-3">
-                  <p className="eyebrow">Map + Info</p>
+                  <p className="eyebrow">Head Office</p>
                   <h3 className="font-heading text-2xl font-semibold">
-                    Address-ready information block
+                    Company information block
                   </h3>
-                  <p className="text-sm leading-6 text-muted-foreground">
-                    Future Industrial Park, Building A
-                    <br />
-                    Shanghai, China
-                    <br />
-                    Mon - Fri, 08:30 - 18:00
+                  <p className="max-w-xl text-sm leading-6 text-muted-foreground">
+                    This Google Map currently points to Shanghai as a
+                    placeholder and can be updated to your exact office or
+                    factory location later.
                   </p>
                 </div>
               </div>
-            </div>
 
-            <Accordion
-              type="single"
-              collapsible
-              className="border-t border-border/80"
-            >
-              {companySignals.map((item) => (
-                <AccordionItem key={item.title} value={item.title}>
-                  <AccordionTrigger className="py-4 text-base font-medium no-underline hover:no-underline">
-                    <span className="font-heading text-xl">{item.title}</span>
-                  </AccordionTrigger>
-                  <AccordionContent className="pr-6 text-sm leading-7 text-muted-foreground">
-                    <p>{item.description}</p>
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
+              <div className="space-y-4">
+                {companyDetails.map((item) => (
+                  <div
+                    key={item.label}
+                    className="grid gap-2 border-b border-border/70 pb-4 last:border-b-0 last:pb-0 md:grid-cols-[120px_1fr]"
+                  >
+                    <div className="font-mono text-[0.72rem] tracking-[0.22em] text-muted-foreground uppercase">
+                      {item.label}
+                    </div>
+                    <div className="text-sm leading-6 text-foreground/86">
+                      {item.value}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </Section>
