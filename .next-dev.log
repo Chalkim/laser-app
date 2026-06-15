@@ -1,0 +1,12 @@
+
+> laser-app@0.0.1 dev
+> next dev
+
+▲ Next.js 16.2.6 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.1.100:3000
+✓ Ready in 402ms
+Creating turbopack project { dir: 'C:\\Users\\Jiang\\workspace\\laser-app', testMode: true }
+
+○ Compiling / ...
+[?25h
