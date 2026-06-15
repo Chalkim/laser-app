@@ -207,18 +207,8 @@ export default function Page() {
       </Section>
 
       <Section id="company">
-        <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
-          <div className="overflow-hidden rounded-[1.8rem] border border-border/80 bg-secondary/30">
-            <iframe
-              title="LaserWorks location map"
-              src="https://www.google.com/maps?q=Shanghai%20China&z=12&output=embed"
-              className="h-[260px] w-full md:h-[320px]"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
-          </div>
-
-          <div className="rounded-[1.8rem] border border-border/80 bg-card/70 p-6">
+        <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-stretch">
+          <div className="flex h-full flex-col rounded-[1.8rem] border border-border/80 bg-card/70 p-6">
             <div className="flex items-start gap-4">
               <div className="rounded-full border border-border/70 bg-secondary/80 p-3">
                 <MapPin className="size-5 text-accent" />
@@ -246,6 +236,16 @@ export default function Page() {
                 </div>
               ))}
             </div>
+          </div>
+
+          <div className="overflow-hidden rounded-[1.8rem] border border-border/80 bg-secondary/30">
+            <iframe
+              title="LaserWorks location map"
+              src="https://www.google.com/maps?q=Shanghai%20China&z=12&output=embed"
+              className="h-full min-h-[320px] w-full"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
           </div>
         </div>
       </Section>
