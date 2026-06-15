@@ -8,33 +8,64 @@ import { SiteFooter } from "@/components/home/site-footer"
 import { SiteHeader } from "@/components/home/site-header"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 const heroImage =
   "https://images.unsplash.com/photo-1738162837451-2041c1418f54?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1800"
 
-const productImage =
+const productImageA =
   "https://images.unsplash.com/photo-1738162837438-92ff852619a1?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1600"
+
+const productImageB =
+  "https://images.unsplash.com/photo-1564936160333-8b7a7ba8722c?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1600"
+
+const productImageC =
+  "https://images.unsplash.com/photo-1720036236694-d0a231c52563?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1600"
 
 const factoryImage =
   "https://images.unsplash.com/photo-1720036236694-d0a231c52563?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1600"
 
 const products = [
   {
-    value: "flagship",
-    label: "Flagship Machine",
-    title: "A hero product should feel like a centerpiece, not a card.",
+    label: "Flagship Series",
+    title: "LX Prime",
     description:
-      "Use a single large image and a concise narrative to introduce the leading machine platform. This feels more premium than breaking the first product story into multiple little boxes.",
+      "High-end fiber laser cutting system for premium sheet metal production.",
     image: heroImage,
   },
   {
-    value: "family",
-    label: "Product Family",
-    title: "Tabs let the homepage show range without stacking card after card.",
+    label: "Production Line",
+    title: "LX Dynamic",
     description:
-      "A tabbed product area gives you room to present multiple machine directions while keeping the section disciplined and visually calm.",
-    image: productImage,
+      "Balanced cutting performance for continuous manufacturing workflows.",
+    image: productImageA,
+  },
+  {
+    label: "Large Format",
+    title: "LX Format",
+    description:
+      "Built for larger sheets, stronger presence, and industrial stability.",
+    image: productImageB,
+  },
+  {
+    label: "Automation Cell",
+    title: "LX Flow",
+    description:
+      "Integrated loading and unloading concept for scalable factory layouts.",
+    image: productImageC,
+  },
+  {
+    label: "Precision Studio",
+    title: "LX FineCut",
+    description:
+      "Cleaner detailing for refined cutting applications and thinner materials.",
+    image: productImageA,
+  },
+  {
+    label: "Compact Footprint",
+    title: "LX Compact",
+    description:
+      "A smaller system concept for tighter production spaces and agile operations.",
+    image: productImageB,
   },
 ]
 
@@ -71,10 +102,9 @@ export default function Page() {
                   Make the banner feel high-end before it feels technical.
                 </h1>
                 <p className="max-w-xl text-base leading-7 text-muted-foreground md:text-lg">
-                  This version pulls the page away from stacked cards and toward
-                  a more editorial industrial style. The first impression comes
-                  from image scale, controlled typography, and quiet
-                  composition.
+                  The first impression comes from image scale, controlled
+                  typography, and quiet composition instead of a crowded
+                  technical layout.
                 </p>
               </div>
             </div>
@@ -92,16 +122,15 @@ export default function Page() {
                 size="lg"
                 className="rounded-full border-border/80 bg-background/70 px-6"
               >
-                <Link href="#products">View Sections</Link>
+                <Link href="#products">View Products</Link>
               </Button>
             </div>
 
             <div className="max-w-xl border-t border-border/80 pt-5">
               <p className="eyebrow">Direction</p>
               <p className="mt-3 text-sm leading-7 text-foreground/82">
-                The image is no longer treated like a card. It behaves like a
-                real visual centerpiece, while the surrounding content is kept
-                open and breathable.
+                The image behaves like a real visual centerpiece, while the
+                surrounding content stays open and breathable.
               </p>
             </div>
           </div>
@@ -137,123 +166,85 @@ export default function Page() {
           <div className="max-w-3xl space-y-4">
             <p className="eyebrow">Product Introduction</p>
             <h2 className="headline-balance font-heading text-4xl font-semibold tracking-tight md:text-5xl">
-              Use tabs to show product range without boxing everything in.
+              Present the product range like a clean industrial catalog.
             </h2>
             <p className="text-base leading-7 text-muted-foreground">
-              `Tabs` are a better fit here than multiple cards. They keep the
-              layout structured, but let one large visual stay in focus at a
-              time.
+              Since you have many products, this section now works more like a
+              storefront grid: repeated blocks, quick scanning, and room to
+              grow.
             </p>
           </div>
 
-          <Tabs defaultValue="flagship" className="gap-6">
-            <TabsList
-              variant="line"
-              className="w-full justify-start gap-6 overflow-x-auto p-0 text-base"
-            >
-              {products.map((product) => (
-                <TabsTrigger
-                  key={product.value}
-                  value={product.value}
-                  className="rounded-none px-0 py-2 text-sm"
-                >
-                  {product.label}
-                </TabsTrigger>
-              ))}
-            </TabsList>
-
+          <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
             {products.map((product) => (
-              <TabsContent key={product.value} value={product.value}>
-                <div className="grid gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
-                  <figure className="relative aspect-[16/10] overflow-hidden rounded-[2rem]">
-                    <Image
-                      src={product.image}
-                      alt={product.title}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 1024px) 100vw, 56vw"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-r from-primary/45 to-transparent" />
-                  </figure>
-
-                  <div className="space-y-5">
-                    <p className="eyebrow">{product.label}</p>
-                    <h3 className="headline-balance font-heading text-3xl font-semibold md:text-4xl">
-                      {product.title}
-                    </h3>
-                    <p className="max-w-xl text-base leading-7 text-muted-foreground">
-                      {product.description}
-                    </p>
-                    <div className="border-t border-border/80 pt-5 text-sm leading-7 text-foreground/82">
-                      This approach feels more like a premium brand presentation
-                      and less like a grid of repeating marketing boxes.
-                    </div>
-                  </div>
+              <article
+                key={product.title}
+                className="group overflow-hidden rounded-[1.8rem] border border-border/80 bg-card/92 transition-transform duration-300 hover:-translate-y-1"
+              >
+                <figure className="relative aspect-[4/3] overflow-hidden">
+                  <Image
+                    src={product.image}
+                    alt={product.title}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/62 via-primary/8 to-transparent" />
+                </figure>
+                <div className="space-y-3 p-5">
+                  <p className="eyebrow">{product.label}</p>
+                  <h3 className="font-heading text-2xl font-semibold">
+                    {product.title}
+                  </h3>
+                  <p className="text-sm leading-6 text-muted-foreground">
+                    {product.description}
+                  </p>
                 </div>
-              </TabsContent>
+              </article>
             ))}
-          </Tabs>
+          </div>
         </div>
       </Section>
 
       <Section id="company">
-        <div className="grid gap-6 lg:grid-cols-[1.08fr_0.92fr]">
-          <div className="overflow-hidden rounded-[2.2rem] border border-border/80 bg-secondary/30">
+        <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
+          <div className="overflow-hidden rounded-[1.8rem] border border-border/80 bg-secondary/30">
             <iframe
               title="LaserWorks location map"
               src="https://www.google.com/maps?q=Shanghai%20China&z=12&output=embed"
-              className="h-[420px] w-full md:h-[560px]"
+              className="h-[260px] w-full md:h-[320px]"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             />
           </div>
 
-          <div className="flex flex-col gap-6">
-            <div className="space-y-4">
-              <p className="eyebrow">Company Information</p>
-              <h2 className="headline-balance font-heading text-4xl font-semibold tracking-tight md:text-5xl">
-                Keep the company section direct and useful.
-              </h2>
-              <p className="text-base leading-7 text-muted-foreground">
-                Left side for the map, right side for the essential company
-                details. No extra folded content, just the key information
-                visitors are most likely to look for.
-              </p>
+          <div className="rounded-[1.8rem] border border-border/80 bg-card/70 p-6">
+            <div className="flex items-start gap-4">
+              <div className="rounded-full border border-border/70 bg-secondary/80 p-3">
+                <MapPin className="size-5 text-accent" />
+              </div>
+              <div className="space-y-1">
+                <p className="eyebrow">Company Information</p>
+                <h2 className="font-heading text-2xl font-semibold">
+                  LaserWorks Manufacturing
+                </h2>
+              </div>
             </div>
 
-            <div className="space-y-5 border-y border-border/80 py-6">
-              <div className="flex items-start gap-4">
-                <div className="rounded-full border border-border/70 bg-secondary/80 p-3">
-                  <MapPin className="size-5 text-accent" />
-                </div>
-                <div className="space-y-3">
-                  <p className="eyebrow">Head Office</p>
-                  <h3 className="font-heading text-2xl font-semibold">
-                    Company information block
-                  </h3>
-                  <p className="max-w-xl text-sm leading-6 text-muted-foreground">
-                    This Google Map currently points to Shanghai as a
-                    placeholder and can be updated to your exact office or
-                    factory location later.
-                  </p>
-                </div>
-              </div>
-
-              <div className="space-y-4">
-                {companyDetails.map((item) => (
-                  <div
-                    key={item.label}
-                    className="grid gap-2 border-b border-border/70 pb-4 last:border-b-0 last:pb-0 md:grid-cols-[120px_1fr]"
-                  >
-                    <div className="font-mono text-[0.72rem] tracking-[0.22em] text-muted-foreground uppercase">
-                      {item.label}
-                    </div>
-                    <div className="text-sm leading-6 text-foreground/86">
-                      {item.value}
-                    </div>
+            <div className="space-y-3 pt-6">
+              {companyDetails.map((item) => (
+                <div
+                  key={item.label}
+                  className="grid gap-1 border-b border-border/70 pb-3 last:border-b-0 last:pb-0 md:grid-cols-[104px_1fr]"
+                >
+                  <div className="font-mono text-[0.72rem] tracking-[0.2em] text-muted-foreground uppercase">
+                    {item.label}
                   </div>
-                ))}
-              </div>
+                  <div className="text-sm leading-6 text-foreground/86">
+                    {item.value}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
